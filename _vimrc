@@ -8,10 +8,13 @@ endif
 filetype plugin indent on
 syntax on 
 
+"Revisar si require el exec en win/lin
 colorscheme desert
 exec ":hi CursorLine guibg=gray20"
 exec ":hi Normal guibg=gray5"
 exec ":hi NonText guibg=gray20" 
+hi Pmenu guibg=black guifg=cyan
+hi Pmenu guibg=black guifg=skyBlue
 
 set number
 set hidden         
@@ -123,8 +126,5 @@ let g:syntastic_java_javac_custom_classpath_command = "ant -q path|grep echo|cut
 "Otras configuraciones
 set includeexpr=substitute(v:fname,'work.','','g') 
 set suffixesadd=.vhd,.vhdl,.java 
-
-hi Pmenu guibg=black guifg=cyan
-hi Pmenu guibg=black guifg=skyBlue
 
 autocmd BufNewFile  makefile r ~/vimfiles/my_templates/makefile 
