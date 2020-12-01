@@ -8,13 +8,16 @@ endif
 filetype plugin indent on
 syntax on 
 
-"Revisar si require el exec en win/lin
 colorscheme desert
-exec ":hi CursorLine guibg=gray20"
-exec ":hi Normal guibg=gray5"
-exec ":hi NonText guibg=gray20" 
-hi Pmenu guibg=black guifg=cyan
-hi Pmenu guibg=black guifg=skyBlue
+hi Normal	 	   guibg=gray5
+hi NonText 		   guibg=gray15
+hi CursorLine 	   guibg=gray15
+hi CursorColumn	   guibg=gray25
+hi Pmenu 		   guibg=gray15 guifg=skyBlue
+hi PmenuSel		   guibg=orange guifg=black
+hi SignColumn	   guibg=#002255
+hi GitGutterDelete guifg=red guibg=black
+hi GitGutterAdd    guifg=red
 
 set number
 set hidden         
@@ -28,9 +31,11 @@ set scrolloff=5
 set shiftwidth=4
 set laststatus=2
 set cursorcolumn
-set numberwidth=5
+set numberwidth=6
 set spellsuggest=14
 set nowrapscan
+set hlsearch
+set backspace=indent,eol,start
 
 " Directories
 """""""""""""
@@ -42,7 +47,8 @@ if ($OS == 'Windows_NT')
 	set   spellfile=~/vimfiles/spell/es.utf-8.add
 	set viminfofile=~/vimfiles/_viminfo
 	set noundofile
-else
+"Unix
+else 
 	let    MRU_File='~/.vim/_vim_mru_files'
 	set   backupdir=~/.vim/backup/swap
 	set   directory=~/.vim/backup/directory
@@ -56,8 +62,12 @@ endif
 map <C-f9>  <esc>:make clean<cr>
 map <C-f10> <esc>:make<cr>
 map <C-f11> <esc>:silent make run<cr>:silent copen<cr>
-"term_sendkeys() mada mensajes al buffer (nro, msg) 
-map <C-f12> :call term_sendkeys(bufnr("*cmd.exe*"), "make run\n\r")<cr> 
+"term_sendkeys() mada mensajes al buffer (nro, msg), this map is for :terminal
+if ($OS == 'Windows_NT') 
+	map <C-f12> :call term_sendkeys(bufnr("*cmd.exe*"), "make run\n\r")<cr> 
+else
+	map <C-f12> :call term_sendkeys(bufnr("*bash*"), "make run\n\r")<cr> 
+endif
 
 "Copy/Paste
 " <C-V> (insert)->paste, <C-V> (visual)->paste, replace. <C-C> (visual)->" Copy
@@ -66,22 +76,22 @@ vmap <C-V> "+gp
 vmap <C-C> "+y
 
 "Vimtex
+let g:tex_flavor = 'latex' 
 let g:vimtex_compiler_latexmk = {
-			\ 'backend' : 'process',
-			\ 'background' : 1,
-			\ 'build_dir' : 'output',
-			\ 'callback' : 1,
-			\ 'continuous' : 1,
-			\ 'options' : [
-			\   '-use-make',
-			\   '-pdf',
-			\   '-verbose',
-			\   '-file-line-error',
-			\   '-synctex=1',
-			\   '-interaction=nonstopmode',
-			\ ],
-			\}
-"let g:vimtex_quickfix_open_on_warning=0   "Para que no se abra la ventanita en warnings
+        \ 'build_dir' : 'output',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+		\	'-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+		\   '-use-make',
+        \ ],
+        \}
 
 if ($OS == 'Windows_NT') 
 	let g:vimtex_view_general_viewer = 'SumatraPDF' 
@@ -92,13 +102,8 @@ else
 	let g:vimtex_view_general_options_latexmk = '--unique'
 endif
 
-"YCM
-let g:ycm_auto_trigger = 0 
-set completeopt-=preview 
-
 "NERDTree
 map <C-F2> :NERDTreeToggle<cr>
-let NERDTreeIgnore = ['\~$', '\.\(aux\|bbl\|blg\|log\|out\|bst\|cls\|synctex\)$', ]
 
 "Airline
 let g:airline_theme='luna'  
@@ -116,16 +121,21 @@ let g:syntastic_verilog_vlog_args="-work modelSimProject/work"
 let g:syntastic_systemverilog_checkers=["vlog"]
 let g:syntastic_systemverilog_vlog_args="-sv -work modelSimProject/work" 
 
-"Para syntastic con ant
+"syntastic with ant
 let g:syntastic_java_javac_config_file_enabled=1 
 "let g:syntastic_java_javac_custom_classpath_command = "ant -q path|grep echo|cut -f2- -d]|tr -d ' '|tr ':' '\n'"
 let g:syntastic_java_javac_custom_classpath_command = "ant -q path|grep echo|cut -f2- -d]|tr -d ' '|tr ';' '\n'"
-
-"let g:syntastic_cpp_include_dirs = [ '/usr/local/include'] 
 
 "Otras configuraciones
 set includeexpr=substitute(v:fname,'work.','','g') 
 set suffixesadd=.vhd,.vhdl,.java 
 
-autocmd BufNewFile  makefile r ~/vimfiles/my_templates/makefile 
+""YCM
+let g:ycm_auto_trigger = 0 
+set completeopt-=preview 
 
+"CMake plugin
+let g:cmake_export_compile_commands=1
+let g:cmake_ycm_symlinks=1
+
+autocmd BufNewFile  CMakeLists.txt r ~/.vim/my_templates/CMakeLists.txt
