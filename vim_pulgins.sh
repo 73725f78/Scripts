@@ -23,6 +23,12 @@ git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/honza/vim-snippets.git
 git clone https://github.com/lervag/vimtex.git
 
+#Optionals
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh
+
+cd ..
 git clone https://github.com/ycm-core/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
