@@ -128,3 +128,4 @@ set includeexpr=substitute(v:fname,'work.','','g')
 set suffixesadd=.vhd,.vhdl,.java 
 
 autocmd BufNewFile  makefile r ~/vimfiles/my_templates/makefile 
+
