@@ -4,6 +4,7 @@ mkdir -p ~/.vim/backup/{swap,directory,undodir,spell}
 
 cd ~/.vim/pack/my_pack/start
 
+git clone https://github.com/dhruvasagar/vim-table-mode.git
 git clone git://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/chrisbra/csv.vim.git
 git clone https://github.com/yegappan/mru.git
