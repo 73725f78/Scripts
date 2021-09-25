@@ -9,4 +9,4 @@ sudo apt install gnome-session -y
 sudo apt install gnome-tweaks gnome-tweak-tool -y
 sudo apt install gnome-shell-extensions -y
 sudo apt install adwaita-icon-theme-full -y
-
+sudo apt install ffmpegthumbnailer -y
