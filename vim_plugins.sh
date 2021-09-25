@@ -23,6 +23,7 @@ git clone https://github.com/airblade/vim-gitgutter.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/honza/vim-snippets.git
 git clone https://github.com/lervag/vimtex.git
+git clone https://github.com/octol/vim-cpp-enhanced-highlight.git
 
 #Optionals
 git clone https://github.com/ryanoasis/nerd-fonts.git
