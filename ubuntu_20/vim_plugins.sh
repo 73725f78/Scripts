@@ -1,3 +1,12 @@
+#Copy configuration files
+cp _vimrc ~/.vimrc
+sudo cp gvim.desktop /usr/share/applications/
+
+#Set gvim as default for some files
+xdg-mime default gvim.desktop application/x-shellscript
+xdg-mime default gvim.desktop text/plain
+
+
 mkdir -p ~/.vim
 mkdir -p ~/.vim/pack/my_pack/{opt,start}
 mkdir -p ~/.vim/backup/{swap,directory,undodir,spell}
@@ -34,4 +43,7 @@ cd ..
 git clone https://github.com/ycm-core/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
-python3 install.py --all
+
+#python3 install.py --all
+python3 install.py --java-completer --clangd-completer      # Compiling YCM with semantic support for C-family languages through clangd:
+															# and java
