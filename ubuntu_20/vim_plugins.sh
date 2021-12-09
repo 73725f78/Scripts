@@ -1,6 +1,8 @@
+set -v
+
 #Copy configuration files
 cp _vimrc ~/.vimrc
-sudo cp gvim.desktop /usr/share/applications/
+sudo desktop-file-install gvim.desktop
 
 #Set gvim as default for some files
 xdg-mime default gvim.desktop application/x-shellscript

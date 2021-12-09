@@ -1,5 +1,7 @@
 ##Instalacion de gvim
 
+set -v
+
 sudo apt update -y
 sudo apt build-dep vim-gtk3 -y
 
