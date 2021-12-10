@@ -1,0 +1,60 @@
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+
+ ################################################## My configurations
+
+Blue='\[\e[38;5;33m\]'
+Gray='\[\e[38;5;238m\]'
+Yellow='\[\e[38;5;220m\]'
+Purple='\[\e[38;5;125m\]'
+Green='\[\e[38;5;48m\]'
+Red='\[\e[38;5;197m\]'
+DarkRed='\[\e[38;5;54m\]'
+White='\[\e[38;5;7m\]'
+Reset='\[\e[00m\]'
+
+git_branch(){
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+chars(){
+	branch_size=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#1} - ${#branch_size} - 5"
+	if [ $columns -gt 0 ] 
+	then
+		head -c ${columns} < /dev/zero | tr '\0' '-'
+	fi
+}
+
+export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$DarkRed\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
+export EDITOR=vim
+
+export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH

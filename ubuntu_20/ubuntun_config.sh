@@ -1,5 +1,8 @@
 set -v
 
+cp _bashrc ~/.bashrc
+cp _profile ~/.profile
+
 timedatectl set-timezone America/Mexico_City    #configura zona horario (ntpd)
 
 sudo apt update -y
