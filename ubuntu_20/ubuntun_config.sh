@@ -12,6 +12,7 @@ sudo apt autoremove -y
 #sudo snap install vim-editor                    # 8.2.788
 sudo snap install cmake --classic
 
+sudo apt install -y chromium-browser
 sudo apt install -y gparted
 sudo apt install -y vlc
 sudo apt install -y okular
