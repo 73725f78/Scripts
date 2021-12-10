@@ -13,6 +13,11 @@ mkdir -p ~/.vim
 mkdir -p ~/.vim/pack/my_pack/{opt,start}
 mkdir -p ~/.vim/backup/{swap,directory,undodir,spell}
 
+cp -r my_templates ~/.vim/
+
+exit
+
+
 cd ~/.vim/pack/my_pack/start
 
 git clone https://github.com/dhruvasagar/vim-table-mode.git
