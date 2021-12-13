@@ -11,6 +11,7 @@ sudo apt autoremove -y
 
 #sudo snap install vim-editor                    # 8.2.788
 sudo snap install cmake --classic
+sudo snap install shutter
 
 sudo apt install -y chromium-browser
 sudo apt install -y gparted
