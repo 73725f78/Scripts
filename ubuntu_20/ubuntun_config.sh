@@ -40,3 +40,7 @@ sudo apt install -y ruby ruby-dev
 sudo apt install -y tcl tcl-devel
 sudo apt install -y dos2unix
 
+
+#atl-tab shows only apps from the current workspace
+gsettings set org.gnome.shell.app-switcher current-workspace-only true
+
