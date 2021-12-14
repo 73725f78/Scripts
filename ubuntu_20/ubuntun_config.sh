@@ -37,10 +37,18 @@ sudo apt install -y openjdk-8-jre
 
 sudo apt install -y python3 python3-dev
 sudo apt install -y ruby ruby-dev
-sudo apt install -y tcl tcl-devel
+sudo apt install -y tcl tcl-dev
 sudo apt install -y dos2unix
 
 
-#atl-tab shows only apps from the current workspace
-gsettings set org.gnome.shell.app-switcher current-workspace-only true
+#atl-tab shows only apps from the current workspace (checar)
+gsettings set org.gnome.shell.app-switcher current-workspace-only false
 
+#Open home folder
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
+
+#Shows apps from current ws
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+
+#Shows apps from all ws
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   
