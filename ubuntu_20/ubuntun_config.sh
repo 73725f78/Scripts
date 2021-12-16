@@ -34,6 +34,8 @@ sudo apt install -y openjdk-8-demo
 sudo apt install -y openjdk-8-doc
 sudo apt install -y openjdk-8-jdk
 sudo apt install -y openjdk-8-jre
+sudo apt install -y ant
+sudo apt install -y ivy
 
 sudo apt install -y python3 python3-dev
 sudo apt install -y ruby ruby-dev
