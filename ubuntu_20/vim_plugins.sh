@@ -7,6 +7,7 @@ sudo desktop-file-install gvim.desktop
 #Set gvim as default for some files
 xdg-mime default gvim.desktop application/x-shellscript
 xdg-mime default gvim.desktop text/plain
+xdg-mime default gvim.desktop text/x-java
 
 
 mkdir -p ~/.vim
