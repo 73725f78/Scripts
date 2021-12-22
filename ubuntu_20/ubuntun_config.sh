@@ -1,7 +1,7 @@
 set -v
 
-cp _bashrc ~/.bashrc
-cp _profile ~/.profile
+cat _bashrc >> ~/.bashrc
+cat _profile >> ~/.profile
 
 timedatectl set-timezone America/Mexico_City    #configura zona horario (ntpd)
 
