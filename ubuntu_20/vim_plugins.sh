@@ -8,6 +8,7 @@ sudo desktop-file-install gvim.desktop
 xdg-mime default gvim.desktop application/x-shellscript
 xdg-mime default gvim.desktop text/plain
 xdg-mime default gvim.desktop text/x-java
+xdg-mime default gvim.desktop application/xml
 
 
 mkdir -p ~/.vim
@@ -15,9 +16,6 @@ mkdir -p ~/.vim/pack/my_pack/{opt,start}
 mkdir -p ~/.vim/backup/{swap,directory,undodir,spell}
 
 cp -r my_templates ~/.vim/
-
-exit
-
 
 cd ~/.vim/pack/my_pack/start
 
