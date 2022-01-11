@@ -1,0 +1,11 @@
+sudo apt install -y gawk
+sudo apt install -y netstat
+sudo apt install -y xterm
+sudo apt install -y autoconf
+sudo apt install -y libtool
+sudo apt install -y texinfo
+sudo apt install -y zlib1g-dev
+sudo apt install -y zlib1g:i386
+sudo apt install -y gcc-multilib
+sudo apt install -y libncurses5-dev
+sudo apt install -y net-tools
