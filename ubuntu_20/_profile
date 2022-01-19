@@ -28,5 +28,7 @@ export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$DarkR
 export EDITOR=vim
 
 export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+export PATH=/opt/intelFPGA_pro/20.3/modelsim_ase/linux/:$PATH
+
 export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
