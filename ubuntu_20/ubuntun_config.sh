@@ -13,6 +13,7 @@ sudo apt autoremove -y
 sudo snap install cmake --classic
 sudo snap install shutter
 
+sudo apt install -y gnuplot-x11
 sudo apt install -y chromium-browser
 sudo apt install -y gparted
 sudo apt install -y vlc
