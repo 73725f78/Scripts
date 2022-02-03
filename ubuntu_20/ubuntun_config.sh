@@ -1,5 +1,7 @@
 set -v
 
+touch ~/Templates/file.txt
+
 cat _bashrc >> ~/.bashrc
 cat _profile >> ~/.profile
 
