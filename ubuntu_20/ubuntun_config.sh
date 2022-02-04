@@ -15,7 +15,6 @@ sudo apt autoremove -y
 sudo snap install cmake --classic
 sudo snap install shutter
 
-sudo apt install -y gnuplot-x11
 sudo apt install -y chromium-browser
 sudo apt install -y gparted
 sudo apt install -y vlc
@@ -32,6 +31,8 @@ sudo apt install -y ffmpegthumbnailer
 sudo apt install -y unrar
 sudo apt install -y openssh-server
 
+sudo apt install -y gnuplot-x11
+sudo apt install -y minicom
 sudo apt install -y openjdk-8-dbg
 sudo apt install -y openjdk-8-demo
 sudo apt install -y openjdk-8-doc
