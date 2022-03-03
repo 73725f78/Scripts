@@ -1,5 +1,13 @@
 set -v
 
+
+wget https://www.freebsdnews.com/wp-content/uploads/linux-circuitry-taringa-5865330.jpg.png
+mv linux-circuitry-taringa-5865330.jpg.png ~/Pictures/linux-circuitry.png
+
+gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/linux-circuitry.png"
+
+
+
 touch ~/Templates/file.txt
 
 cat _bashrc >> ~/.bashrc
