@@ -66,3 +66,13 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 
 #Shows apps from all ws
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   
+
+
+#Show desktop icons
+gnome-extensions enable desktop-icons@csoriano
+gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
+
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
