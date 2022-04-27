@@ -50,6 +50,7 @@ sudo apt install -y python3 python3-dev
 sudo apt install -y ruby ruby-dev
 sudo apt install -y tcl tcl-dev
 sudo apt install -y dos2unix
+sudo apt install -y rabbitvcs-nautilus
 
 
 #atl-tab shows only apps from the current workspace (checar)
