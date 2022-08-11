@@ -37,6 +37,7 @@ sudo apt install -y dos2unix
 sudo apt install -y openssh-server
 sudo apt install -y chromium-browser
 sudo apt install -y ffmpegthumbnailer
+sudo apt install -y rabbitvcs-nautilus
 sudo apt install -y simplescreenrecorder
 
 sudo apt install -y gnuplot-x11
