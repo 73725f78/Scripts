@@ -1,4 +1,3 @@
 "# Scripts" 
 
-
-Configuration scripts.
+Configuration scripts for ubuntu installation.

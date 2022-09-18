@@ -1,13 +1,12 @@
-
- ################################################## My configurations
+################################################## My configurations
 
 Blue='\[\e[38;5;33m\]'
 Gray='\[\e[38;5;238m\]'
 Yellow='\[\e[38;5;220m\]'
-Purple='\[\e[38;5;125m\]'
+Pink='\[\e[38;5;125m\]'
 Green='\[\e[38;5;48m\]'
 Red='\[\e[38;5;197m\]'
-DarkRed='\[\e[38;5;54m\]'
+Purple='\[\e[38;5;60m\]'
 White='\[\e[38;5;7m\]'
 Reset='\[\e[00m\]'
 
@@ -24,8 +23,7 @@ chars(){
 	fi
 }
 
-
-export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$DarkRed\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
+export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
 
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64

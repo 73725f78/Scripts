@@ -1,4 +1,4 @@
-#Vivado 2021.2
+#Vivado 2022
 
 sudo apt install -y libncurses5-dev 
 sudo apt install -y libncursesw5-dev 
