@@ -25,16 +25,14 @@ chars(){
 }
 
 
-
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$DarkRed\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
-
 
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 
-export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
 export PATH=/opt/intelFPGA_pro/20.3/modelsim_ase/linux/:$PATH
 
-export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
+export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH

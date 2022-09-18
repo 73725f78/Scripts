@@ -21,7 +21,10 @@ sudo snap install cmake --classic
 sudo snap install gradle --classic
 sudo snap install shutter
 
+sudo apt install -y build-essential
+sudo apt install -y libssl-dev
 sudo apt install -y libncurses-dev 
+
 sudo apt install -y gnome-session
 sudo apt install -y gnome-tweaks gnome-tweak-tool
 sudo apt install -y gnome-shell-extensions
