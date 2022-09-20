@@ -78,6 +78,10 @@ sudo apt install -y openjdk-17-doc
 sudo apt install -y openjdk-17-jdk
 sudo apt install -y openjdk-17-jre
 
+sudo mkdir /opt
+sudo chown $USER /opt 
+sudo chgrp $USER /opt 
+
 #install gradle
 wget https://downloads.gradle-dn.com/distributions/gradle-7.5.1-bin.zip
 unzip -q gradle-7.5.1-bin.zip
