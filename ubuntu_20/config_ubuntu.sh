@@ -5,7 +5,7 @@ mv linux-circuitry-taringa-5865330.jpg.png ~/Pictures/linux-circuitry.png
 
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/linux-circuitry.png"
 
-touch ~/Templates/file.txt
+touch ~/Templates/txt_file.txt
 
 cat _bashrc >> ~/.bashrc
 cat _profile >> ~/.profile
@@ -16,9 +16,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-#sudo snap install vim-editor                    # 8.2.788
 sudo snap install cmake --classic
-sudo snap install gradle --classic
 sudo snap install shutter
 
 sudo apt install -y build-essential
@@ -29,7 +27,6 @@ sudo apt install -y gnome-session
 sudo apt install -y gnome-tweaks gnome-tweak-tool
 sudo apt install -y gnome-shell-extensions
 sudo apt install -y adwaita-icon-theme-full
-sudo apt install -y git
 sudo apt install -y vlc
 sudo apt install -y tmux
 sudo apt install -y unrar
@@ -45,18 +42,14 @@ sudo apt install -y rabbitvcs-nautilus
 sudo apt install -y simplescreenrecorder
 
 sudo apt install -y gnuplot-x11
-sudo apt install -y openjdk-17-dbg
-sudo apt install -y openjdk-17-demo
-sudo apt install -y openjdk-17-doc
-sudo apt install -y openjdk-17-jdk
-sudo apt install -y openjdk-17-jre
-sudo apt install -y ant
-sudo apt install -y ivy
-
 sudo apt install -y python3 python3-dev
 sudo apt install -y ruby ruby-dev
 sudo apt install -y tcl tcl-dev
 
+sudo apt install -y git
+git config --global diff.tool gvimdiff
+git config --global merge.tool gvimdiff
+git config --global --add difftool.prompt false
 
 #atl-tab shows only apps from the current workspace (checar)
 gsettings set org.gnome.shell.app-switcher current-workspace-only false
@@ -70,6 +63,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 #Shows apps from all ws
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   
 
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 #Show desktop icons
 gnome-extensions enable desktop-icons@csoriano
@@ -77,4 +71,29 @@ gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
 gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
 gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
 
-gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+#Java ======================================================================
+sudo apt install -y openjdk-17-dbg
+sudo apt install -y openjdk-17-demo
+sudo apt install -y openjdk-17-doc
+sudo apt install -y openjdk-17-jdk
+sudo apt install -y openjdk-17-jre
+
+#install gradle
+wget https://downloads.gradle-dn.com/distributions/gradle-7.5.1-bin.zip
+unzip -q gradle-7.5.1-bin.zip
+rm gradle-7.5.1-bin.zip
+mv gradle-7.5.1 /opt/
+
+#install ant
+wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.12-bin.tar.gz
+tar -xzf apache-ant-1.10.12-bin.tar.gz
+rm apache-ant-1.10.12-bin.tar.gz
+mv apache-ant-1.10.12 /opt/
+
+#install Ivy
+wget https://dlcdn.apache.org//ant/ivy/2.5.0/apache-ivy-2.5.0-bin.tar.gz
+tar -xzf apache-ivy-2.5.0-bin.tar.gz
+rm apache-ivy-2.5.0-bin.tar.gz
+mv apache-ivy-2.5.0 /opt/
+mkdir -p /home/luis/.ant/lib
+cp /opt/apache-ivy-2.5.0/ivy-2.5.0.jar $HOME/.ant/lib
