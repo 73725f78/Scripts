@@ -78,7 +78,7 @@ sudo apt install -y openjdk-17-doc
 sudo apt install -y openjdk-17-jdk
 sudo apt install -y openjdk-17-jre
 
-sudo mkdir /opt
+sudo mkdir -p /opt
 sudo chown $USER /opt 
 sudo chgrp $USER /opt 
 
