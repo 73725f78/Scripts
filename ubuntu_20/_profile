@@ -39,4 +39,7 @@ export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
 export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
 
-export PATH=/opt/intelFPGA_pro/20.3/modelsim_ase/linux/:$PATH
+#intel questa 22.2 starter edition
+export PATH=/opt/intelFPGA_pro/22.2/questa_fse/linux_x86_64/:$PATH
+#A licence files is required (create one in the page)
+export LM_LICENSE_FILE=/opt/intelFPGA_pro/License.dat
