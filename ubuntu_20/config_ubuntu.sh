@@ -30,6 +30,7 @@ sudo apt install -y adwaita-icon-theme-full
 sudo apt install -y vlc
 sudo apt install -y tmux
 sudo apt install -y unrar
+sudo apt install -y ffmpeg
 sudo apt install -y okular
 sudo apt install -y gparted
 sudo apt install -y minicom
