@@ -34,6 +34,7 @@ sudo apt install -y ffmpeg
 sudo apt install -y okular
 sudo apt install -y gparted
 sudo apt install -y minicom
+sudo apt install -y imagemagick
 sudo apt install -y thunderbird
 sudo apt install -y dos2unix
 sudo apt install -y openssh-server
