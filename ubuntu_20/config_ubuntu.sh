@@ -104,3 +104,10 @@ rm apache-ivy-2.5.0-bin.tar.gz
 mv apache-ivy-2.5.0 /opt/
 mkdir -p /home/luis/.ant/lib
 cp /opt/apache-ivy-2.5.0/ivy-2.5.0.jar $HOME/.ant/lib
+
+
+#install eclipse
+wget https://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/2022-09/R/eclipse-jee-2022-09-R-linux-gtk-x86_64.tar.gz
+tar -xzf eclipse-jee-2022-09-R-linux-gtk-x86_64.tar.gz
+rm  eclipse-jee-2022-09-R-linux-gtk-x86_64.tar.gz
+mv  eclipse /opt/
