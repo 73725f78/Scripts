@@ -1,0 +1,142 @@
+set encoding=utf-8
+
+if ($OS == 'Windows_NT')
+	source c:\Program\ Files\ (x86)\Vim\_vimrc
+	set guifont=Consolas:h11	 "Font
+endif
+
+filetype plugin indent on
+syntax on 
+
+colorscheme desert
+hi Normal	 	   guibg=gray5
+hi NonText 		   guibg=gray15
+hi CursorLine 	   guibg=gray15
+hi CursorColumn	   guibg=gray25
+hi Pmenu 		   guibg=gray15 guifg=skyBlue
+hi PmenuSel		   guibg=orange guifg=black
+hi SignColumn	   guibg=#002255
+hi GitGutterDelete guifg=red guibg=black
+hi GitGutterAdd    guifg=red
+
+set number
+set hidden         
+set backup
+set tabstop=4
+set smartcase
+set ignorecase
+set cursorline
+set visualbell
+set scrolloff=5  
+set shiftwidth=4
+set laststatus=2
+set cursorcolumn
+set numberwidth=6
+set spellsuggest=14
+set nowrapscan
+set hlsearch
+set backspace=indent,eol,start
+
+" Directories
+"""""""""""""
+if ($OS == 'Windows_NT') 
+	let    MRU_File='~/vimfiles/_vim_mru_files'
+	set   backupdir=~/vimfiles/backup/swap
+	set   directory=~/vimfiles/backup/directory
+	set     undodir=~/vimfiles/backup/undodir
+	set   spellfile=~/vimfiles/spell/es.utf-8.add
+	set viminfofile=~/vimfiles/_viminfo
+	set noundofile
+"Unix
+else 
+	let    MRU_File='~/.vim/_vim_mru_files'
+	set   backupdir=~/.vim/backup/swap
+	set   directory=~/.vim/backup/directory
+	set     undodir=~/.vim/backup/undodir
+	set   spellfile=~/.vim/backup/spell/es.utf-8.add
+	set viminfofile=~/.vim/_viminfo
+endif
+
+"Maps
+"""""
+map <C-f9>  <esc>:make clean<cr>
+map <C-f10> <esc>:make<cr>
+map <C-f11> <esc>:silent make run<cr>:silent copen<cr>
+"term_sendkeys() mada mensajes al buffer (nro, msg), this map is for :terminal
+if ($OS == 'Windows_NT') 
+	map <C-f12> :call term_sendkeys(bufnr("*cmd.exe*"), "make run\n\r")<cr> 
+else
+	map <C-f12> :call term_sendkeys(bufnr("*bash*"), "make run\n\r")<cr> 
+endif
+
+"Copy/Paste
+" <C-V> (insert)->paste, <C-V> (visual)->paste, replace. <C-C> (visual)->" Copy
+imap <C-V> <ESC>"+gpa
+vmap <C-V> "+gp
+vmap <C-C> "+y
+
+"Vimtex
+let g:tex_flavor = 'latex' 
+let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : 'output',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+		\	'-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+		\   '-use-make',
+        \ ],
+        \}
+
+if ($OS == 'Windows_NT') 
+	let g:vimtex_view_general_viewer = 'SumatraPDF' 
+	let g:vimtex_view_general_options='-reuse-instance -forward-search @tex @line @pdf'
+else
+	let g:vimtex_view_general_viewer = 'okular'
+	let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+endif
+
+"NERDTree
+map <C-F2> :NERDTreeToggle<cr>
+
+"Airline
+let g:airline_theme='luna'  
+let g:airline#extensions#tabline#enabled=1"
+
+"Syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1 
+
+let g:syntastic_vhdl_checkers=["vcom"]
+let g:syntastic_vhdl_vcom_args="-work modelSimProject/work" 
+
+let g:syntastic_verilog_checkers=["vlog"]
+let g:syntastic_verilog_vlog_args="-work modelSimProject/work" 
+let g:syntastic_systemverilog_checkers=["vlog"]
+let g:syntastic_systemverilog_vlog_args="-sv -work modelSimProject/work" 
+
+"syntastic with ant
+let g:syntastic_java_javac_config_file_enabled=1 
+"let g:syntastic_java_javac_custom_classpath_command = "ant -q path|grep echo|cut -f2- -d]|tr -d ' '|tr ':' '\n'"
+let g:syntastic_java_javac_custom_classpath_command = "ant -q path|grep echo|cut -f2- -d]|tr -d ' '|tr ';' '\n'"
+
+"Otras configuraciones
+set includeexpr=substitute(v:fname,'work.','','g') 
+set suffixesadd=.vhd,.vhdl,.java 
+
+""YCM
+let g:ycm_auto_trigger = 0 
+set completeopt-=preview 
+
+"CMake plugin
+let g:cmake_export_compile_commands=1
+let g:cmake_ycm_symlinks=1
+
+autocmd BufNewFile  CMakeLists.txt r ~/.vim/my_templates/CMakeLists.txt
+
+au BufRead,BufNewFile *.nasm set filetype=nasm
