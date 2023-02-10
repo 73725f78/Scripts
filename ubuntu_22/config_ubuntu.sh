@@ -52,6 +52,8 @@ sudo apt install -y gnuplot-x11
 sudo apt install -y python3 python3-dev
 sudo apt install -y ruby ruby-dev
 sudo apt install -y tcl tcl-dev
+sudo apt install -y clang
+sudo apt install -y libclang-dev
 
 sudo apt install -y git
 git config --global diff.tool gvimdiff
