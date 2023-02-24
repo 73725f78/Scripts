@@ -4,6 +4,9 @@ mkdir -p ~/.vim
 mkdir -p ~/.vim/pack/my_pack/{opt,start}
 mkdir -p ~/.vim/backup/{swap,directory,undodir,spell}
 
+#Copy configuration files
+cp _vimrc ~/.vimrc
+
 cp -r my_templates ~/.vim/
 
 cd ~/.vim/pack/my_pack/start

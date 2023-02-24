@@ -21,9 +21,6 @@ sudo apt build-dep vim-gtk3 -y
 #Create desktop application
 sudo desktop-file-install gvim.desktop
 
-#Copy configuration files
-cp _vimrc ~/.vimrc
-
 #Set gvim as default for some file types
 # xdg-mime query filetype <file> to get the mimetype of <file> 
 xdg-mime default gvim.desktop application/x-shellscript

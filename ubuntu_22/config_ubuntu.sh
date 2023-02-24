@@ -47,6 +47,7 @@ sudo apt install -y chromium-browser
 sudo apt install -y ffmpegthumbnailer
 sudo apt install -y rabbitvcs-nautilus
 sudo apt install -y simplescreenrecorder
+#sudo apt install -y vim-nox
 
 sudo apt install -y gnuplot-x11
 sudo apt install -y python3 python3-dev
