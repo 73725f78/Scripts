@@ -26,4 +26,5 @@ chars(){
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
 
+LS_COLORS=$LS_COLORS:"di=1;94;40"					#Light Blue for directories in terminal
 #PROMPT_COMMAND='echo -en "\033]0;NEW_TITLE\a"'
