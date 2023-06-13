@@ -83,11 +83,11 @@ gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
 gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
 
 #Java ======================================================================
-sudo apt install -y openjdk-17-dbg
-sudo apt install -y openjdk-17-demo
-sudo apt install -y openjdk-17-doc
-sudo apt install -y openjdk-17-jdk
-sudo apt install -y openjdk-17-jre
+sudo apt install -y openjdk-19-dbg
+sudo apt install -y openjdk-19-demo
+sudo apt install -y openjdk-19-doc
+sudo apt install -y openjdk-19-jdk
+sudo apt install -y openjdk-19-jre
 
 sudo mkdir -p /opt
 sudo chown $USER /opt 
