@@ -8,6 +8,7 @@ touch ~/Templates/txt_file.txt
 
 cat _bashrc >> ~/.bashrc
 cat _profile >> ~/.profile
+cp config ~/.ssh/
 
 timedatectl set-timezone America/Mexico_City    #configura zona horario (ntpd)
 
@@ -18,7 +19,6 @@ sudo apt upgrade -y
 sudo apt autoremove -y
 
 sudo snap install cmake --classic
-sudo snap install shutter
 
 sudo apt install -y build-essential
 sudo apt install -y libssl-dev
@@ -36,6 +36,7 @@ sudo apt install -y unrar
 sudo apt install -y ffmpeg
 sudo apt install -y okular
 sudo apt install -y gparted
+sudo apt install -y shutter
 sudo apt install -y minicom
 sudo apt install -y imagemagick
 sudo apt install -y thunderbird

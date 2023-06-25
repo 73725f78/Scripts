@@ -1,0 +1,19 @@
+Host inaoe
+	HostName ccc.inaoep.mx
+	User lrodriguez
+	Port 8312
+
+Host github73.com
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/id_rsa_73725f78
+
+Host githublr.com
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/id_rsa_lrodriguez_crypto
+
+Host githubtec.com
+	HostName github.com
+	User lrodriguez-tec
+	IdentityFile ~/.ssh/id_rsa_tec

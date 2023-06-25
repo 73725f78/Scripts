@@ -31,15 +31,8 @@ git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/honza/vim-snippets.git
 git clone https://github.com/lervag/vimtex.git
 git clone https://github.com/octol/vim-cpp-enhanced-highlight.git
-
-#Optionals
-git clone https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts
-./install.sh
-
-cd ..
 git clone https://github.com/ycm-core/YouCompleteMe.git
+
 cd YouCompleteMe
 git submodule update --init --recursive
-
 python3 install.py --java-completer --clangd-completer      # YCM with semantic support for C-family languages (clangd) and java
