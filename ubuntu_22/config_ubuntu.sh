@@ -8,7 +8,6 @@ touch ~/Templates/txt_file.txt
 
 cat _bashrc >> ~/.bashrc
 cat _profile >> ~/.profile
-cp config ~/.ssh/
 
 timedatectl set-timezone America/Mexico_City    #configura zona horario (ntpd)
 
@@ -125,6 +124,4 @@ mv  eclipse /opt/
 
 sudo desktop-file-install eclipse.desktop
 
-ssh-keygen -f ~/.ssh/id_rsa_lr_crypto -N ''
-ssh-keygen -f ~/.ssh/id_rsa_73 -N ''
-ssh-keygen -f ~/.ssh/id_rsa_tec -N ''
+
