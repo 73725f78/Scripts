@@ -6,12 +6,12 @@ Host inaoe
 Host github73.com
 	HostName github.com
 	User git
-	IdentityFile ~/.ssh/id_rsa_73725f78
+	IdentityFile ~/.ssh/id_rsa_73
 
 Host githublr.com
 	HostName github.com
 	User git
-	IdentityFile ~/.ssh/id_rsa_lrodriguez_crypto
+	IdentityFile ~/.ssh/id_rsa_lr_crypto
 
 Host githubtec.com
 	HostName github.com

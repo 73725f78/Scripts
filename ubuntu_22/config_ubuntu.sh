@@ -63,6 +63,15 @@ git config --global diff.tool gvimdiff
 git config --global merge.tool gvimdiff
 git config --global --add difftool.prompt false
 
+#enable a gnome-shell extension ubuntu
+gnome-extensions enable ding@rastersoft.com 
+gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable ubuntu-appindicators@ubuntu.com
+gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable places-menu@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable windowsNavigator@gnome-shell-extensions.gcampax.github.com
+
 #atl-tab shows only apps from the current workspace (checar)
 gsettings set org.gnome.shell.app-switcher current-workspace-only false
 
@@ -76,12 +85,6 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-
-#Show desktop icons
-gnome-extensions enable desktop-icons@csoriano
-gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
 
 #Java ======================================================================
 sudo apt install -y openjdk-19-dbg
@@ -121,3 +124,7 @@ rm  eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz
 mv  eclipse /opt/
 
 sudo desktop-file-install eclipse.desktop
+
+ssh-keygen -f ~/.ssh/id_rsa_lr_crypto -N ''
+ssh-keygen -f ~/.ssh/id_rsa_73 -N ''
+ssh-keygen -f ~/.ssh/id_rsa_tec -N ''
