@@ -28,6 +28,7 @@ xdg-mime default gvim.desktop text/plain
 xdg-mime default gvim.desktop text/x-java
 xdg-mime default gvim.desktop application/xml
 xdg-mime default gvim.desktop text/x-chdr 
+xdg-mime default gvim.desktop text/x-c++src
 
 git clone https://github.com/vim/vim.git
 cd vim
