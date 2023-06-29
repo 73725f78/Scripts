@@ -36,3 +36,5 @@ git clone https://github.com/ycm-core/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
 python3 install.py --java-completer --clangd-completer      # YCM with semantic support for C-family languages (clangd) and java
+
+echo "YCM Works well for gcc-11 g++-11 (For me it is not working for gcc-12 g++-12)"
