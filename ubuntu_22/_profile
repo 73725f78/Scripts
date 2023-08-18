@@ -26,13 +26,13 @@ chars(){
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
 
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 
 export GRADLE_HOME=/opt/gradle-7.5.1
 export PATH=$GRADLE_HOME/bin:$PATH
 
-export ANT_HOME=/opt/apache-ant-1.10.12
+export ANT_HOME=/opt/apache-ant-1.10.13
 export PATH=$ANT_HOME/bin:$PATH
 
 export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
