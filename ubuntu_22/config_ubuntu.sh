@@ -97,32 +97,35 @@ sudo mkdir -p /opt
 sudo chown $USER /opt 
 sudo chgrp $USER /opt 
 
-#install gradle
-wget https://downloads.gradle-dn.com/distributions/gradle-7.5.1-bin.zip
-unzip -q gradle-7.5.1-bin.zip
-rm gradle-7.5.1-bin.zip
-mv gradle-7.5.1 /opt/
 
-#install ant
-wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.12-bin.tar.gz
-tar -xzf apache-ant-1.10.12-bin.tar.gz
-rm apache-ant-1.10.12-bin.tar.gz
-mv apache-ant-1.10.12 /opt/
+function download_install_zip(){
+	url=$1
+	file_name=$2
+	pack_dir=$3
 
-#install Ivy
-wget https://dlcdn.apache.org//ant/ivy/2.5.1/apache-ivy-2.5.1-bin.tar.gz
-tar -xzf apache-ivy-2.5.1-bin.tar.gz
-rm apache-ivy-2.5.1-bin.tar.gz
-mv apache-ivy-2.5.1 /opt/
+	wget $url$file_name
+	unzip -q $file_name
+	rm $file_name
+	mv $pack_dir /opt/
+}
+
+function download_install_tar(){
+	url=$1
+	file_name=$2
+	pack_dir=$3
+
+	wget $url$file_name
+	tar -xzf $file_name
+	rm $file_name
+	mv $pack_dir /opt/
+}
+
+
+download_install_zip "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.zip" "gradle-8.3"
+download_install_tar "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.13-bin.tar.gz" "apache-ant-1.10.13"
+download_install_tar "https://eclipse.mirror.rafal.ca/technology/epp/downloads/release/2023-03/R/" "eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz" "eclipse"
+download_install_tar "https://dlcdn.apache.org//ant/ivy/2.5.1/" "apache-ivy-2.5.1-bin.tar.gz" "apache-ivy-2.5.1"
 mkdir -p /home/luis/.ant/lib
 cp /opt/apache-ivy-2.5.1/ivy-2.5.1.jar $HOME/.ant/lib
 
-#install eclipse
-wget https://eclipse.mirror.rafal.ca/technology/epp/downloads/release/2023-03/R/eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz
-tar -xzf eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz
-rm  eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz
-mv  eclipse /opt/
-
 sudo desktop-file-install eclipse.desktop
-
-
