@@ -15,7 +15,7 @@ git_branch(){
 }
 
 chars(){
-	branch_size=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+	branch_size=$(git_branch)
 	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#1} - ${#branch_size} - 5"
 	if [ $columns -gt 0 ] 
 	then
@@ -23,8 +23,28 @@ chars(){
 	fi
 }
 
+#   ================================================== Otra forma de poner el PS1
+#
+#   PROMPT_COMMAND=_prompt_command
+#   _prompt_command() {
+#   	branch_name=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+#   	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#branch_name} - 5"
+#   	PS1="$Blue[$Yellow\w$Purple\$branch_name$Blue]$Gray\$(chars $columns '\w')[\[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
+#   }
+#   
+#   chars() {
+#   	total=$(($1 - ${#2}))
+#   	if [ $total -gt 0 ] 
+#   	then
+#   		head -c $total < /dev/zero | tr '\0' '-'
+#   	fi
+#   }
+
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
 
 LS_COLORS=$LS_COLORS:"di=1;94;40"					#Light Blue for directories in terminal
-#PROMPT_COMMAND='echo -en "\033]0;NEW_TITLE\a"'
+
+tname() {											#Cambiar nombre a tab (en gnome-terminal)
+	PROMPT_COMMAND='echo -en "\033]0;'$1'\a"'
+}
