@@ -1,4 +1,6 @@
 ################################################## My configurations
+#
+#posiblemente revisar oh my bash. tiene buenos temas y plugins
 
 Blue='\[\e[38;5;33m\]'
 Gray='\[\e[38;5;238m\]'
