@@ -49,6 +49,7 @@ sudo apt install -y simplescreenrecorder
 sudo apt install -y libxml2-utils
 sudo apt install -y graphviz
 sudo apt install -y gimp
+sudo apt install -y plantuml
 #sudo apt install -y vim-nox
 
 sudo apt install -y gnuplot-x11

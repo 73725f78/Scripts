@@ -11,6 +11,11 @@ cp -r my_templates ~/.vim/
 
 cd ~/.vim/pack/my_pack/start
 
+#PlantUML
+git clone https://github.com/aklt/plantuml-syntax
+git clone https://github.com/tyru/open-browser.vim.git
+git clone https://github.com/weirongxu/plantuml-previewer.vim.git
+
 git clone https://github.com/dhruvasagar/vim-table-mode.git
 git clone git://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/chrisbra/csv.vim.git
