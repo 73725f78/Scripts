@@ -35,9 +35,9 @@ export PATH=$GRADLE_HOME/bin:$PATH
 export ANT_HOME=/opt/apache-ant-1.10.13
 export PATH=$ANT_HOME/bin:$PATH
 
-export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
 
 #intel questa starter edition
 export PATH=/opt/intelFPGA_pro/23.3/questa_fse/linux_x86_64/:$PATH
