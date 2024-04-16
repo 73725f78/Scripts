@@ -100,34 +100,32 @@ sudo chown $USER /opt
 sudo chgrp $USER /opt 
 
 
-function download_install_zip(){
+function download_install(){
 	url=$1
 	file_name=$2
 	pack_dir=$3
+	format="${4:-tar.gz}"
+
+	echo $format
 
 	wget $url$file_name
-	unzip -q $file_name
+
+	case $format in
+		"tar.gz")  tar -xzf $file_name ;;
+		"tar.bz2") tar -xjf $file_name ;;
+		"zip")     unzip -q $file_name ;;
+	esac;
+	
 	rm $file_name
 	mv $pack_dir /opt/
 }
 
-function download_install_tar(){
-	url=$1
-	file_name=$2
-	pack_dir=$3
-
-	wget $url$file_name
-	tar -xzf $file_name
-	rm $file_name
-	mv $pack_dir /opt/
-}
-
-
-download_install_zip "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.zip" "gradle-8.3"
-download_install_tar "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.13-bin.tar.gz" "apache-ant-1.10.13"
-download_install_tar "https://eclipse.mirror.rafal.ca/technology/epp/downloads/release/2023-03/R/" "eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz" "eclipse"
-download_install_tar "https://dlcdn.apache.org//ant/ivy/2.5.1/" "apache-ivy-2.5.1-bin.tar.gz" "apache-ivy-2.5.1"
+download_install "https://download.zotero.org/client/release/6.0.35/" "Zotero-6.0.35_linux-x86_64.tar.bz2" "Zotero_linux-x86_64" "tar.bz2"
+download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.zip" "gradle-8.3" "zip"
+download_install "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.13-bin.tar.gz" "apache-ant-1.10.13" 
+download_install "https://mirror.umd.edu/eclipse/technology/epp/downloads/release/2024-03/R/" "eclipse-jee-2024-03-R-linux-gtk-x86_64.tar.gz" "eclipse"
+download_install "https://dlcdn.apache.org//ant/ivy/2.5.2/" "apache-ivy-2.5.2-bin.tar.gz" "apache-ivy-2.5.2"
 mkdir -p /home/luis/.ant/lib
-cp /opt/apache-ivy-2.5.1/ivy-2.5.1.jar $HOME/.ant/lib
+cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
 
 sudo desktop-file-install eclipse.desktop
