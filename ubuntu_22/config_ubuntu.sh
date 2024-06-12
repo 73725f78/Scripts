@@ -89,11 +89,11 @@ gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 #Java ======================================================================
-sudo apt install -y openjdk-19-dbg
-sudo apt install -y openjdk-19-demo
-sudo apt install -y openjdk-19-doc
-sudo apt install -y openjdk-19-jdk
-sudo apt install -y openjdk-19-jre
+sudo apt install -y openjdk-21-dbg
+sudo apt install -y openjdk-21-demo
+sudo apt install -y openjdk-21-doc
+sudo apt install -y openjdk-21-jdk
+sudo apt install -y openjdk-21-jre
 
 sudo mkdir -p /opt
 sudo chown $USER /opt 
@@ -125,7 +125,7 @@ download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.z
 download_install "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.13-bin.tar.gz" "apache-ant-1.10.13" 
 download_install "https://mirror.umd.edu/eclipse/technology/epp/downloads/release/2024-03/R/" "eclipse-jee-2024-03-R-linux-gtk-x86_64.tar.gz" "eclipse"
 download_install "https://dlcdn.apache.org//ant/ivy/2.5.2/" "apache-ivy-2.5.2-bin.tar.gz" "apache-ivy-2.5.2"
-mkdir -p /home/luis/.ant/lib
+mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
 
 sudo desktop-file-install eclipse.desktop

@@ -26,7 +26,7 @@ chars(){
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
 
-export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 
 export GRADLE_HOME=/opt/gradle-8.3
