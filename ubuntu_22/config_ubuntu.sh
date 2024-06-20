@@ -48,6 +48,7 @@ sudo apt install -y rabbitvcs-nautilus
 sudo apt install -y simplescreenrecorder
 sudo apt install -y libxml2-utils
 sudo apt install -y graphviz
+sudo apt install -y graphviz-dev
 sudo apt install -y gimp
 sudo apt install -y plantuml
 sudo apt install -y xournalpp
