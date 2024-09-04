@@ -123,10 +123,10 @@ function download_install(){
 
 download_install "https://download.zotero.org/client/release/6.0.35/" "Zotero-6.0.35_linux-x86_64.tar.bz2" "Zotero_linux-x86_64" "tar.bz2"
 download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.zip" "gradle-8.3" "zip"
-download_install "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.13-bin.tar.gz" "apache-ant-1.10.13" 
+download_install "https://dlcdn.apache.org//ant/binaries/" "apache-ant-1.10.14-bin.tar.gz" "apache-ant-1.10.14" 
 download_install "https://mirror.umd.edu/eclipse/technology/epp/downloads/release/2024-06/R/" "eclipse-jee-2024-06-R-linux-gtk-x86_64.tar.gz" "eclipse"
 download_install "https://dlcdn.apache.org//ant/ivy/2.5.2/" "apache-ivy-2.5.2-bin.tar.gz" "apache-ivy-2.5.2"
-download_install "https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.24/bin/" "apache-tomcat-10.1.24.tar.gz" "apache-tomcat-10.1.24" "tar.gz"
+download_install "https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.28/bin/" "apache-tomcat-10.1.28.tar.gz" "apache-tomcat-10.1.28" "tar.gz"
 
 mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
