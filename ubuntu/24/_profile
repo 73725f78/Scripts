@@ -1,0 +1,44 @@
+################################################## My configurations
+
+Blue='\[\e[38;5;33m\]'
+Gray='\[\e[38;5;238m\]'
+Yellow='\[\e[38;5;220m\]'
+Pink='\[\e[38;5;125m\]'
+Green='\[\e[38;5;48m\]'
+Red='\[\e[38;5;197m\]'
+Purple='\[\e[38;5;60m\]'
+White='\[\e[38;5;7m\]'
+Reset='\[\e[00m\]'
+
+git_branch(){
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+chars(){
+	branch_size=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#1} - ${#branch_size} - 5"
+	if [ $columns -gt 0 ] 
+	then
+		head -c ${columns} < /dev/zero | tr '\0' '-'
+	fi
+}
+
+export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
+export EDITOR=vim
+
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+
+export GRADLE_HOME=/opt/gradle-8.3
+export PATH=$GRADLE_HOME/bin:$PATH
+
+export ANT_HOME=/opt/apache-ant-1.10.15
+export PATH=$ANT_HOME/bin:$PATH
+
+export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+
+#intel questa starter edition
+export PATH=/opt/intelFPGA_pro/23.3/questa_fse/linux_x86_64/:$PATH
+export LM_LICENSE_FILE=/opt/intelFPGA_pro/License.dat                 #A licence files is required (create one in the page)
