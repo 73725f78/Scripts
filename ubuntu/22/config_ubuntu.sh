@@ -128,7 +128,7 @@ download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.z
 download_install "https://archive.apache.org/dist/ant/binaries/" "apache-ant-1.10.15-bin.tar.gz" "apache-ant-1.10.14" 
 download_install "https://archive.apache.org/dist/ant/ivy/2.5.2/" "apache-ivy-2.5.2-bin.tar.gz" "apache-ivy-2.5.2"
 download_install "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.31/bin/" "apache-tomcat-10.1.31.tar.gz" "apache-tomcat-10.1.31" "tar.gz"
-download_install "https://mirror.umd.edu/eclipse/technology/epp/downloads/release/2024-06/R/" "eclipse-jee-2024-06-R-linux-gtk-x86_64.tar.gz" "eclipse"
+download_install "https://mirror.umd.edu/eclipse/technology/epp/downloads/release/2024-12/R/" "eclipse-jee-2024-12-R-linux-gtk-x86_64.tar.gz" "eclipse"
 
 mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
