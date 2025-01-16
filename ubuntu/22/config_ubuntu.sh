@@ -134,3 +134,4 @@ mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
 
 sudo desktop-file-install eclipse.desktop
+sudo desktop-file-install zotero.desktop
