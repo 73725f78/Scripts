@@ -43,3 +43,9 @@ git submodule update --init --recursive
 python3 install.py --java-completer --clangd-completer      # YCM with semantic support for C-family languages (clangd) and java
 
 echo "YCM Works well for gcc-11 g++-11 (For me it is not working for gcc-12 g++-12, if YCM not working remove gcc-11 and g++-11)"
+
+#Para el error, correr los siguientes comandos. Actualizar algunos paquetes del python3
+#ycm TypeError: canonicalize_version() got an unexpected keyword argument 'strip_trailing_zero'
+#
+#python -m pip install --upgrade pip
+#python -m pip install --upgrade setuptools wheel twine check-wheel-contents
