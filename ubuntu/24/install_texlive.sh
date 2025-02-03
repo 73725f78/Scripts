@@ -7,3 +7,6 @@ sudo mount -o loop texlive2024.iso /mnt/iso
 sudo /mnt/iso/install-tl --no-interaction
 sudo umount /mnt/iso
 rm texlive2024.iso
+
+# add to:  ~/.latexmkrc 
+# $pdf_previewer = 'okular';
