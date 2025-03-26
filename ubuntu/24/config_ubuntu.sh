@@ -1,19 +1,18 @@
 set -v
 
-cat _bashrc >> ~/.bashrc
-cat _profile >> ~/.profile
+sudo add-apt-repository universe
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt autoremove -y
 
 touch ~/Templates/txt_file.txt
+
+cat config_files/_bashrc >> ~/.bashrc
+cat config_files/_profile >> ~/.profile
 
 cp pictures/circuitry-bsd-logo.jpg  ~/Pictures/
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
-
-sudo add-apt-repository universe
-
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt autoremove -y
 
 git config --global diff.tool gvimdiff
 git config --global merge.tool gvimdiff
@@ -25,9 +24,6 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"		
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"		  #Shows apps from current ws
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   #Shows apps from all ws
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-
-sudo apt install -y $(apt search gnome-shell-extension | grep ^gnome | cut -d / -f1)
-pip install conan
 
 #enable a gnome-shell extension ubuntu
 gnome-extensions enable ding@rastersoft.com 
