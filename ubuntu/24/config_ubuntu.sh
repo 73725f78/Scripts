@@ -10,7 +10,7 @@ touch ~/Templates/txt_file.txt
 cat config_files/_bashrc >> ~/.bashrc
 cat config_files/_profile >> ~/.profile
 
-cp pictures/circuitry-bsd-logo.jpg  ~/Pictures/
+cp config_files/pictures/circuitry-bsd-logo.jpg  ~/Pictures/
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
 
@@ -68,4 +68,4 @@ download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.z
 mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
 
-sudo desktop-file-install eclipse.desktop
+sudo config_files/desktop-file-install eclipse.desktop
