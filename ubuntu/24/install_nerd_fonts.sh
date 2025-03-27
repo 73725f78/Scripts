@@ -1,3 +1,5 @@
+mkdir -p ~/.fonts/
+
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/ComicShannsMono.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Ubuntu.zip
