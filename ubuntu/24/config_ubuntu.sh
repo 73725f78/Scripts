@@ -1,38 +1,11 @@
 set -v
 
-sudo add-apt-repository universe
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt autoremove -y
-
-touch ~/Templates/txt_file.txt
-
 cat config_files/_bashrc >> ~/.bashrc
 cat config_files/_profile >> ~/.profile
 
 cp config_files/pictures/circuitry-bsd-logo.jpg  ~/Pictures/
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
-
-git config --global diff.tool gvimdiff
-git config --global merge.tool gvimdiff
-git config --global --add difftool.prompt false
-
-#atl-tab shows only apps from the current workspace (checar)
-gsettings set org.gnome.shell.app-switcher current-workspace-only false		
-gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"		  #Open home folder
-gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"		  #Shows apps from current ws
-gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   #Shows apps from all ws
-gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-
-#enable a gnome-shell extension ubuntu
-gnome-extensions enable ding@rastersoft.com 
-gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable ubuntu-appindicators@ubuntu.com
-gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable places-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable windowsNavigator@gnome-shell-extensions.gcampax.github.com
 
 # ====================================================================== opt
 
