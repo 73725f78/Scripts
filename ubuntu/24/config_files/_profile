@@ -31,9 +31,9 @@ export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export GRADLE_HOME=/opt/gradle-8.3
 export PATH=$GRADLE_HOME/bin:$PATH
 
-export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 
 #intel questa starter edition
 export PATH=/opt/intelFPGA_pro/23.3/questa_fse/linux_x86_64/:$PATH
