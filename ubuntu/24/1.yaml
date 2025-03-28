@@ -14,7 +14,7 @@ autoinstall:
   identity:
     realname: 'luis'
     username: l
-    password: '$6$t7dyhzfjYI4z94yk$DEH4ASVOqdsAABc2L9u6f7kN0fE1tD9U1jmnWkZc0XI2a4PG1uCRhC5yWckWUCDr2aP941nfR8MxAUtoRvqBd.'
+    password: '<oassword>'
     hostname: thinknpad-p1
 
   ssh:
@@ -26,7 +26,7 @@ autoinstall:
   updates: all
 
   ubuntu-pro:
-    token: C13iGFzTQfxvCYmNygAR5QyRJDwjhL
+    token: <token>
 
   packages:
       - vlc
