@@ -28,6 +28,9 @@ autoinstall:
   ubuntu-pro:
     token: <token>
 
+  codecs:
+    install: true
+
   packages:
       - vlc
       - git
@@ -81,6 +84,7 @@ autoinstall:
     - name: ant
       classic: true
     - name: zotero-snap
+    - name: thunderbird
   
   late-commands:
     - curtin in-target -- apt update
