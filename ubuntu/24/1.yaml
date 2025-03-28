@@ -14,7 +14,7 @@ autoinstall:
   identity:
     realname: 'luis'
     username: l
-    password: '<oassword>'
+    password: '<password>'
     hostname: thinknpad-p1
 
   ssh:
