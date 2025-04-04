@@ -60,4 +60,4 @@ download_install "https://downloads.gradle.org/distributions/" "gradle-8.3-bin.z
 mkdir -p /home/$USER/.ant/lib
 cp /opt/apache-ivy-2.5.2/ivy-2.5.2.jar $HOME/.ant/lib
 
-sudo config_files/desktop-file-install eclipse.desktop
+sudo desktop-file-install config_files/eclipse.desktop

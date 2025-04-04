@@ -32,6 +32,7 @@ autoinstall:
     install: true
 
   packages:
+      - libreoffice
       - vlc
       - git
       - gimp
@@ -76,6 +77,7 @@ autoinstall:
       - openjdk-21-doc
       - openjdk-21-jdk
       - openjdk-21-jre
+      - mysql-server
       #- texlive-full
 
   snaps:
@@ -85,6 +87,7 @@ autoinstall:
       classic: true
     - name: zotero-snap
     - name: thunderbird
+    - name: chromium
   
   late-commands:
     - curtin in-target -- apt update
