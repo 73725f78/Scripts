@@ -13,6 +13,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"		  
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"   
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+gsettings set org.gnome.settings-daemon.plugins.power lid-close-ac-action 'nothing'
 
 git config --global diff.tool gvimdiff
 git config --global merge.tool gvimdiff
