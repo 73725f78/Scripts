@@ -1,0 +1,30 @@
+#Se toma como referencia el nombre del directorio
+ #se espera que el .tex tanga el mismo nombre
+
+.PHONY: pdf clean run
+
+FILENAME := $(shell basename $(CURDIR))
+TIKZ_PDF=$(foreach file, $(wildcard resources/tikz/*/*.tex), $(addprefix resources/img/tikz/,$(subst .tex,.pdf,$(notdir ${file}))))
+
+
+pdf: output/$(FILENAME).pdf $(TIKZ_PDF)
+
+clean:
+	rm -f -R output resources/img/tikz
+	find resources -name "?akefile" -execdir make clean \;
+
+run: pdf
+	okular --unique output/$(FILENAME).pdf &
+
+#Se compilan los pdf que se requieran en la carpeta output, de tomo como referencia su .tex
+output/%.pdf: %.tex $(TIKZ_PDF)
+	latexmk -bibtex -output-directory=output -pdf \
+			-pdflatex='pdflatex -shell-escape --synctex=-1 -src-specials -interaction=nonstopmode $$* ' $<
+
+resources/img/tikz/%.pdf: resources/tikz/*/%.tex
+	mkdir -p ${@D}
+	make -C $(^D)
+	cp   $(^D)/output/*.pdf ${@D}
+
+tikz/%.pdf: resources/img/tikz/%.pdf 
+	echo "Creando img"
