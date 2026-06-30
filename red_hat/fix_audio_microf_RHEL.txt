@@ -1,0 +1,91 @@
+================================================== Esto arreglo el audio y video en thinkpad P1
+sudo dnf install alsa-sof-firmware
+sudo dnf install alsa-ucm-utils
+
+1. Revertir el driver Legacy
+El driver 1 deshabilita el micrófono. Debes cambiarlo al driver 3 (Sound Open Firmware):
+
+    Edita el archivo: sudo vi /etc/modprobe.d/audio-legacy.conf
+    Cambia el contenido a:
+    text
+
+    options snd-intel-dspcfg dsp_driver=3
+
+    Usa el código con precaución.
+
+Guarda y cierra.
+
+2. Instalar el Firmware necesario
+Si antes el audio no funcionaba con el driver por defecto, era porque te faltaba el firmware de Intel. Instálalo ahora:
+bash
+
+sudo dnf install alsa-sof-firmware alsa-ucm-utils
+
+Usa el código con precaución.
+3. Actualizar el Kernel e Initramfs
+Como usaste dracut antes, debes regenerarlo para que el sistema olvide el driver antiguo y cargue el nuevo:
+bash
+
+sudo dracut -f --regenerate-all
+
+Usa el código con precaución.
+4. Reiniciar
+Reinicia la laptop.
+
+
+================================================== Modo legacy arregla solo el audio en thinkpad P1
+
+sudo vi /etc/modprobe.d/audio-legacy.conf
+options snd-intel-dspcfg dsp_driver=1
+sudo dracut -f
+reboot
+
+
+
+##################################################
+
+
+Configuración mediante modprobe (Permanente)
+Sigue estos pasos para aplicar el cambio de forma persistente:
+
+    Crea un archivo de configuración:
+    Crea un nuevo archivo en el directorio de configuración de modprobe:
+    bash
+
+    sudo vi /etc/modprobe.d/audio-legacy.conf
+
+    Usa el código con precaución.
+
+Añade la opción de forzado:
+Pega la siguiente línea, que indica al sistema utilizar el driver legacy (valor 1):
+text
+
+options snd-intel-dspcfg dsp_driver=1
+
+Usa el código con precaución.
+Actualiza el initramfs:
+Para que el cambio se aplique desde el arranque temprano del sistema, es necesario regenerar la imagen del kernel:
+bash
+
+sudo dracut -f
+
+Usa el código con precaución.
+Reinicia el sistema:
+bash
+
+sudo reboot
+
+Usa el código con precaución.
+ 
+
+Verificación del cambio
+Tras el reinicio, puedes confirmar que el parámetro se ha aplicado correctamente ejecutando:
+bash
+
+cat /sys/module/snd_intel_dspcfg/parameters/dsp_driver
+
+Usa el código con precaución.
+Si el resultado es 1, el sistema está operando en modo Legacy HDA. 
+Alternativa rápida (Parámetro de Kernel) 
+Si prefieres no crear archivos, puedes añadir el parámetro directamente en la línea del kernel editando /etc/default/grub y añadiendo snd_intel_dspcfg.dsp_driver=1 a la variable GRUB_CMDLINE_LINUX, seguido de la actualización de grub con grub2-mkconfig. 
+¿Deseas saber cómo verificar si este cambio ha solucionado el problema de "Dummy Output" en tu panel de sonido?

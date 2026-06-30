@@ -10,6 +10,8 @@
 #En teroria deberia haber funcionado con los codecs
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.videolan.VLC
+#Screen recorder (Wayland gnome RHEL10)
+flatpak install flathub com.obsproject.Studio
 
 sudo subscription-manager repos --enable "rhel-10-for-$(arch)-extensions-rpms"
 sudo subscription-manager repos --enable "codeready-builder-for-rhel-10-$(uname -m)-rpms"
@@ -28,8 +30,17 @@ sudo dnf install -y gmp-devel
 #sudo dnf install -y ffmpeg-free
 #sudo dnf install -y ffmpeg-free-devel
 
+#For Georgia font in Latex.
+sudo dnf install curl cabextract xorg-x11-font-utils fontconfig
+sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+
+
+sudo dnf install -y libxcrypt-compat	  			#For Biber latex (require this to work in RHEL, compatibility)
+sudo dnf install -y ffmpegthumbnailer
 #sudo dnf install -y gnome-shell-extensions
-sudo dnf install -y  gnome-shell-extension*
+sudo dnf install -y perl-core
+sudo dnf install -y perl-Unicode-Normalize		#nedded for texlive
+sudo dnf install -y gnome-shell-extension*
 sudo dnf install -y vlc
 sudo dnf install -y git
 sudo dnf install -y tor
