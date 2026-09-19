@@ -86,6 +86,14 @@ sudo dnf install -y ctags
 sudo dnf install -y ntfs-3g ntfs-3g-devel fuse
 sudo dnf install -y vlc-plugin-ffmpeg vlc-plugin-gstreamer
 
+#Required for rabbitcsv
+sudo dnf install -y nautilus-python
+sudo dnf install -y python-pygments
+sudo dnf install -y python3-tkinter
+sudo dnf install -y python3-dulwich
+sudo dnf install -y python3-gobject
+sudo dnf install -y python-configobj
+
 #para instalar opera
 # sudo rpm --import https://rpm.opera.com/rpmrepo.key
 # sudo vim /etc/yum.repos.d/opera.repo 

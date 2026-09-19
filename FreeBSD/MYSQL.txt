@@ -1,0 +1,7 @@
+/usr/local/etc/mysql/my.cnf
+
+[mysqld]
+user                            = root
+port                            = 3306
+socket                          = /tmp/mysql.sock
+bind-address                    = 0.0.0.0

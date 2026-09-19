@@ -1,0 +1,159 @@
+pkg install bastille
+sysrc bastille_enable="YES"  #restar after this
+
+sudo bastille bootstrap 15.1-RELEASE
+sudo bastille create -B -M jailTomcat 15.1-RELEASE 10.0.0.80/24 bridge0
+
+echo "net.inet.ip.forwarding=1" | sudo tee -a /etc/sysctl.conf
+
+ >> $ more /etc/rc.conf
+hostname="FreeBSDs"
+#hostname="My"
+
+ifconfig_em0="DHCP"
+ifconfig_em0_ipv6="inet6 accept_rtadv"
+
+sshd_enable="YES"
+ntpd_enable="YES"
+ntpd_sync_on_start="YES"
+local_unbound_enable="YES"
+
+powerd_enable="YES"
+moused_enable="YES"
+# Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
+dumpdev="AUTO"
+
+#tomcat101_enable="YES"
+#tomcat101_java_home="/usr/local/openjdk21"
+#mysql_enable="YES"
+
+clear_tmp_enable="YES"
+syslogd_flags="-ss"
+defaultrouter="192.168.1.254"
+
+bastille_enable="YES"
+
+#============================= Interface for Tomcat
+cloned_interfaces="bridge0"
+ifconfig_bridge0="inet 10.0.0.1/24 up"
+pf_enable="YES"
+
+
+ >> $ more /etc/pf.conf 
+# 1. MACROS (Variables)
+ext_if      = "em0"            # Host internet interface
+jail_net    = "10.0.0.0/24"    # Isolated network for your jails
+jailTomcat  = "10.0.0.80"      # Your specific Tomcat jail IP
+tomcat_port = "8080"          # The internal port Tomcat listens on
+
+# 2. TRANSLATION (NAT & Port Forwarding)
+# NAT: Allows jailTomcat to send packets OUT to the internet (for pkg updates)
+nat on $ext_if from $jail_net to any -> ($ext_if)
+
+# Port Forward: Redirects incoming public port 8080 traffic to the internal jail
+rdr on $ext_if proto tcp from any to any port 8080 -> $jailTomcat port $tomcat_port
+
+# 3. DEFAULT DENY (Blocks all inbound and outbound traffic globally by default)
+block all
+
+# 4. EXPLICIT PASS RULES
+
+# Internal Routing: Allow the host and jails to communicate freely inside local loops
+pass quick on lo0 all
+pass quick on bridge0 all
+
+# --- HOST MACHINE PROTECTION ---
+# SSH Access: Crucial rule to allow you to connect to the host via SSH
+pass in quick on $ext_if proto tcp from any to any port 22 flags S/SA keep state
+
+# Web Access: Allow the host to receive traffic on standard web port 80
+pass in quick on $ext_if proto tcp from any to any port 80 flags S/SA keep state
+
+# Host Outbound: Allow the host machine to reach the internet (DNS, updates, etc.)
+pass out quick on $ext_if proto { tcp, udp, icmp } from ($ext_if) to any keep state
+
+
+# --- JAIL TOMCAT STRICT RESTRICTIONS ---
+# Inbound Traffic Rule: Allow ONLY port 8080 traffic to pass through the host to the jail
+pass in quick on $ext_if proto tcp from any to $jailTomcat port $tomcat_port flags S/SA synproxy state
+
+# Outbound Traffic Rule: Allow jailTomcat to establish connection OUTBOUND to the internet
+# (Required for running pkg update and fetching Tomcat packages)
+pass out quick on $ext_if proto { tcp, udp, icmp } from $jailTomcat to any keep state
+
+
+
+sudo bastille console jailTomcat
+pkg update
+pkg install tomcat110
+pkg install -y openjdk21
+
+
+--
+This OpenJDK implementation may require procfs(5) mounted on /proc for some
+applications.
+
+If you have not done it yet, please do the following:
+
+	mount -t procfs proc /proc
+
+To make it permanent, you need the following lines in /etc/fstab:
+
+	proc	/proc		procfs		rw	0	0
+
+
+#proc is mounted in jails.conf
+
+ >> $ sudo cat /usr/local/bastille/jails/jailTomcat/jail.conf
+jailTomcat {
+  enforce_statfs = 1;
+  devfs_ruleset = 13;
+  exec.clean;
+  exec.consolelog = /var/log/bastille/jailTomcat_console.log;
+  exec.start = '/bin/sh /etc/rc';
+  exec.stop = '/bin/sh /etc/rc.shutdown';
+  host.hostname = jailTomcat;
+  mount.devfs;
+  mount.fstab = /usr/local/bastille/jails/jailTomcat/fstab;
+  path = /usr/local/bastille/jails/jailTomcat/root;
+  securelevel = 2;
+  osrelease = 15.1-RELEASE;
+
+  vnet;
+  vnet.interface = e0b_jailTomcat;
+  exec.prestart += "epair0=\$(ifconfig epair create) && ifconfig \${epair0} up name e0a_jailTomcat && ifconfig \${epair0%a}b up name e0b_jailTomcat";
+  exec.prestart += "ifconfig bridge0 addm e0a_jailTomcat";
+  exec.prestart += "ifconfig e0a_jailTomcat ether 58:9c:fc:13:6f:7a";
+  exec.prestart += "ifconfig e0b_jailTomcat ether 58:9c:fc:13:6f:7b";
+  exec.prestart += "ifconfig e0a_jailTomcat description \"vnet0 host interface for Bastille jail jailTomcat\"";
+  exec.poststop += "ifconfig e0a_jailTomcat destroy";
+
+  mount.procfs;
+}
+
+
+#in the jail
+root@jailTomcat:~ # more /etc/rc.conf
+ifconfig_e0b_jailTomcat_name="vnet0"
+ifconfig_vnet0="inet 10.0.0.80/24"
+ifconfig_vnet0_descr="jail interface for bridge0"
+ifconfig_vnet0_ipv6=""
+
+defaultrouter="192.168.1.254"
+ipv6_defaultrouter="NO"
+syslogd_flags="-ss"
+
+sendmail_enable="NO"
+sendmail_submit_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_msp_queue_enable="NO"
+cron_flags="-J 60"
+
+tomcat11_enable="YES"
+root@jailTomcat:~ # 
+
+
+
+
+#in the jail
+route add default 10.0.0.1
