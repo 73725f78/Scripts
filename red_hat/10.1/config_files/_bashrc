@@ -1,51 +1,33 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
 ################################################## My configurations
-#posiblemente revisar oh my bash. tiene buenos temas y plugins
 
-Blue='\[\e[38;5;33m\]'
-Gray='\[\e[38;5;238m\]'
-Yellow='\[\e[38;5;220m\]'
-Pink='\[\e[38;5;125m\]'
-Green='\[\e[38;5;48m\]'
-Red='\[\e[38;5;197m\]'
-Purple='\[\e[38;5;60m\]'
-White='\[\e[38;5;7m\]'
-Reset='\[\e[00m\]'
-
-git_branch(){
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-chars(){
-	branch_size=$(git_branch)
-	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#1} - ${#branch_size} - 5"
-	if [ $columns -gt 0 ] 
-	then
-		head -c ${columns} < /dev/zero | tr '\0' '-'
-	fi
-}
-
-#   ================================================== Otra forma de poner el PS1
-#
-#   PROMPT_COMMAND=_prompt_command
-#   _prompt_command() {
-#   	branch_name=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
-#   	let "columns = `tput cols` - ${#USER} -${#HOSTNAME} - ${#branch_name} - 5"
-#   	PS1="$Blue[$Yellow\w$Purple\$branch_name$Blue]$Gray\$(chars $columns '\w')[\[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
-#   }
-#   
-#   chars() {
-#   	total=$(($1 - ${#2}))
-#   	if [ $total -gt 0 ] 
-#   	then
-#   		head -c $total < /dev/zero | tr '\0' '-'
-#   	fi
-#   }
-
-export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
 export EDITOR=vim
+export JAVA_HOME=/etc/alternatives/java_sdk
 
-LS_COLORS=$LS_COLORS:"di=1;94;40"					#Light Blue for directories in terminal
+export GRADLE_HOME=/opt/gradle-8.3
+export PATH=$GRADLE_HOME/bin:$PATH
 
-tname() {											#Cambiar nombre a tab (en gnome-terminal)
-	PROMPT_COMMAND='echo -en "\033]0;'$1'\a"'
-}
+export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+
+#intel questa starter edition
+#export PATH=/opt/intelFPGA_pro/23.3/questa_fse/linux_x86_64/:$PATH
+export PATH=/opt/altera/25.1std/questa_fse/linux_x86_64/:$PATH
+export QSIM_ROOTDIR=/opt/altera/25.1std/questa_fse/
+
+export SALT_LICENSE_SERVER=/opt/altera/License.dat                 #A licence files is required (create one in the page)
+
+#Causa problemas con Vitis. Quitarlo cuando se use Vitis.
+export PATH=/opt/riscv/bin:$PATH
+
+#blockchain ethereum
+export PATH=$PATH:/opt/geth-alltools-linux-amd64-1.8.21-9dc5d1a9

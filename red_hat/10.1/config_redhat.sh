@@ -5,7 +5,7 @@ sudo timedatectl set-timezone America/Mexico_City
 touch ~/Templates/txt_file.txt
 
 cat config_files/_bashrc >> ~/.bashrc
-cat config_files/_profile >> ~/.profile
+cat config_files/_bash_profile >> ~/.bash_profile
 
 cp config_files/pictures/circuitry-bsd-logo.jpg  ~/Pictures/
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/Pictures/circuitry-bsd-logo.jpg"
