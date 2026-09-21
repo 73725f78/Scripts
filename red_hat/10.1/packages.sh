@@ -67,10 +67,10 @@ sudo dnf install -y cmake
 sudo dnf install -y thunderbird
 sudo dnf install -y chromium
 sudo dnf install -y vim-X11
-sudo dnf install -y java-21-openjdk
-sudo dnf install -y java-21-openjdk-demo
-sudo dnf install -y java-21-openjdk-devel
-sudo dnf install -y java-21-openjdk-javadoc
+sudo dnf install -y java-25-openjdk
+sudo dnf install -y java-25-openjdk-demo
+sudo dnf install -y java-25-openjdk-devel
+sudo dnf install -y java-25-openjdk-javadoc
 sudo dnf install -y python3-devel
 sudo dnf install -y ruby-devel
 sudo dnf install -y tcl-devel
@@ -106,6 +106,8 @@ sudo dnf install -y python-configobj
 ##   enabled=1
 #
 # sudo dnf install opera-stable
+# pen
+# pne
 
 #No funcionan, revisar.
 #sudo dnf install -y gimp
