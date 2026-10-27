@@ -1,3 +1,34 @@
+================================================== Para instalar/corregir RabbitCSV
+
+git clone https://github.com/rabbitvcs/rabbitvcs.git
+
+cd rabbitvcs
+sudo python3 -m pip install --prefix=/usr .
+sudo gtk-update-icon-cache /usr/share/icons/hicolor
+
+ What's wrong:
+  1. It was installed as an .egg. Running python setup.py install with your setuptools version (69) put the config file, icons and
+     translations inside /usr/local/lib/python3.12/site-packages/rabbitvcs-0.19-py3.12.egg/share/. RabbitVCS never looks there, so every
+     start fails with OSError: Cannot find a configspec.ini file.
+  2. The Nautilus extension was never installed. /usr/share/nautilus-python/extensions/ is empty.
+
+  Fix. Run these from /home/jekyll/Desktop/Basura/rabbitvcs. You can type them with a ! prefix here, e.g. ! sudo ..., so I see the output:
+
+  # 1. Remove the broken egg install
+  sudo rm -rf /usr/local/lib/python3.12/site-packages/rabbitvcs-0.19-py3.12.egg
+  sudo sed -i '/rabbitvcs/d' /usr/local/lib/python3.12/site-packages/easy-install.pth
+
+  # 2. Reinstall with pip so the data files land in /usr/share, where RabbitVCS looks
+  sudo python3 -m pip install --prefix=/usr .
+  sudo gtk-update-icon-cache /usr/share/icons/hicolor
+
+  # 3. Install the Nautilus extension
+  sudo cp clients/nautilus/RabbitVCS.py /usr/share/nautilus-python/extensions/
+
+  # 4. Restart Nautilus
+  nautilus -q; pkill -f checkerservice.py; nautilus &
+
+
 ================================================== Esto arreglo el audio y video en thinkpad P1
 sudo dnf install alsa-sof-firmware
 sudo dnf install alsa-ucm-utils
