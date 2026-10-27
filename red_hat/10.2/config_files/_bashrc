@@ -24,17 +24,13 @@ chars(){
 }
 
 export PS1="$Blue[$Yellow\w$Purple\$(git_branch)$Blue]$Gray\$(chars '\w')[$Pink\h$White@$Blue\u$Gray] $Red>> \\$ $Reset"
-export EDITOR=vim
+export LS_COLORS="${LS_COLORS:+${LS_COLORS}:}di=1;94;40"
 
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+tname() {
+    unset PROMPT_COMMAND
+    title() { true; }
+    echo -ne "\033]0;$1\007"
+}
 
-export GRADLE_HOME=/opt/gradle-8.3
-export PATH=$GRADLE_HOME/bin:$PATH
-
-export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
-
-#intel questa starter edition
-export PATH=/opt/intelFPGA_pro/23.3/questa_fse/linux_x86_64/:$PATH
-export LM_LICENSE_FILE=/opt/intelFPGA_pro/License.dat                 #A licence files is required (create one in the page)
+export HISTSIZE=10000
+export HISTFILESIZE=20000

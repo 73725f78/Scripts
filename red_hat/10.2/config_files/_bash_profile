@@ -1,18 +1,9 @@
-# .bash_profile
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
-
-# User specific environment and startup programs
-
 ################################################## My configurations
 
 export EDITOR=vim
 export JAVA_HOME=/etc/alternatives/java_sdk
 
-export GRADLE_HOME=/opt/gradle-8.3
+export GRADLE_HOME=/opt/gradle/latest
 export PATH=$GRADLE_HOME/bin:$PATH
 
 export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
@@ -27,7 +18,7 @@ export QSIM_ROOTDIR=/opt/altera/25.1std/questa_fse/
 export SALT_LICENSE_SERVER=/opt/altera/License.dat                 #A licence files is required (create one in the page)
 
 #Causa problemas con Vitis. Quitarlo cuando se use Vitis.
-export PATH=/opt/riscv/bin:$PATH
+#export PATH=/opt/riscv/bin:$PATH
 
 #blockchain ethereum
 export PATH=$PATH:/opt/geth-alltools-linux-amd64-1.8.21-9dc5d1a9
