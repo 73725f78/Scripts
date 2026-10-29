@@ -1,26 +1,10 @@
 ##Instalacion de gvim
 
-#FILE="/etc/apt/sources.list"			#changed in ubuntu 24
-FILE="/etc/apt/sources.list.d/ubuntu.sources"
-STRING="Types: deb deb-src"
-
-#Setting sources (src) apt repositories, used by apt build-dep
-if  grep -q "$STRING" "$FILE" ; then
-	echo "$STRING repository found in $FILE" ; 
-else
-	set -v
-	echo 'DEB-SRC (source code) are needed, please enable it in software & updates application'
-	exit 0
-fi
-
-set -v
-
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt build-dep vim-gtk3 -y
+sudo dnf update -y
+sudo dnf builddep -y vim-X11
 
 #Create desktop application
-sudo desktop-file-install gvim.desktop
+#sudo desktop-file-install config_files/gvim.desktop
 
 #Set gvim as default for some file types
 # xdg-mime query filetype <file> to get the mimetype of <file> 
@@ -40,6 +24,6 @@ cd vim
   	    	--enable-rubyinterp=yes     \
   	    	--enable-cscope             \
 	    	--with-compiledby=L
- 
+
 make 
 sudo make install
