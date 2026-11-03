@@ -13,6 +13,7 @@ flatpak install flathub com.github.xournalpp.xournalpp -y
 flatpak install flathub com.obsproject.Studio -y
 flatpak install flathub org.zotero.Zotero -y
 flatpak install flathub org.libreoffice.LibreOffice -y
+flatpak install flathub com.mattjakeman.ExtensionManager -y
 #flatpak install flathub org.videolan.VLC
 
 # 1. Enable the CodeReady Builder repository for RHEL 10
