@@ -61,6 +61,7 @@ sudo dnf install -y python3-pip
 sudo dnf install -y ruby 
 sudo dnf install -y tcl 
 sudo dnf install -y clang
+#Esta version de cmake es 3.x (si quieres la nueva descargar e instalar manualmente)
 sudo dnf install -y cmake
 sudo dnf install -y thunderbird
 sudo dnf install -y vim-X11
@@ -83,6 +84,7 @@ sudo dnf install -y ctags
 sudo dnf install -y ntfs-3g ntfs-3g-devel fuse
 sudo dnf install -y vlc-plugin-ffmpeg vlc-plugin-gstreamer
 sudo dnf install -y okular
+sudo dnf install -y falkon
 
 #Required for rabbitcsv
 sudo dnf install -y nautilus-python
