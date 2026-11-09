@@ -34,6 +34,7 @@ git config --global merge.tool gvimdiff
 git config --global --add difftool.prompt false
 
 sudo dnf groupinstall -y "Development Tools"
+sudo dnf install -y zbar
 sudo dnf install -y ffmpeg
 sudo dnf install -y gnuplot
 sudo dnf install -y clang-devel
